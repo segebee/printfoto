@@ -1,0 +1,4 @@
+bin/
+node_modules/
+public/documentation/
+public/node_modules/

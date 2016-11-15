@@ -1,0 +1,17 @@
+extends layout
+
+block content
+		div.login-box
+			div.login-logo
+				<b>Print</b>Foto
+			div.login-box-body
+				form(action="/login" method="post")
+					div.form-group.has-feedback
+						input.form-control(type="email" placeholder="Email" required)
+						span.glyphicon.glyphicon-envelope.form-control-feedback
+					div.form-group.has-feedback
+						input.form-control(type="password" placeholder="Password" required)
+						span.glyphicon.glyphicon-lock.form-control-feedback
+					div.row
+						div.col-xs-4
+							button.btn.btn-success.btn-block.btn-flat(type="submit") Submit

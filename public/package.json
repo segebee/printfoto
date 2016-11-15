@@ -1,0 +1,11 @@
+{
+  "name": "PrintFotoAngular",
+  "version": "0.0.0",
+  "private": true,
+  "main": "app.js",
+  "scripts": {
+  },
+  "dependencies": {
+    
+  }
+}

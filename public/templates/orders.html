@@ -1,0 +1,96 @@
+    <section class="content-header">
+      <h1>Orders</h1>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+      <!-- Your Page Content Here -->
+      <div class="row">
+        <div class="col-md-12">
+          <div class="box">
+            <div class="box-header with-border">
+              <h3 class="box-title">All Orders</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+
+              <form>
+                <div class="row">
+                  <div class="col-md-4 pull-right">
+                    <div class="form-group">
+                      <div class="input-group">
+                        <div class="input-group-addon"><i class="fa fa-search"></i></div>
+                        <input type="text" class="form-control" placeholder="Search Orders..." ng-model="search">
+                      </div>      
+                    </div>
+                  </div>
+                </div>
+              </form>
+
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>
+                      <a href="" ng-click="sortType='orderId';sortReverse=!sortReverse">
+                        Order ID 
+                        <span ng-show="sortType=='orderId'" class="fa" ng-class="sortReverse ? 'fa-caret-up':'fa-caret-down'"></span>
+                        <!-- <span ng-show="sortType=='orderId' && sortReverse" class="fa fa-caret-up"></span> -->
+                      </a>
+                    </th>
+                    <th>Category</th>
+                    <th>QTY</th>
+                    <th>State</th>
+                    <th>LGA</th>
+                    <th>Status</th>
+                    <th>Paid</th>
+                    <th>Date</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="order in orders | orderBy:sortType:sortReverse | filter:search">
+                    <td>{{order.orderId}}</td>
+                    <td>{{order.category}}</td>
+                    <td>{{order.qty}}</td>
+                    <td>{{order.state}}</td>
+                    <td>{{order.lga}}</td>
+                    <td>{{order.status}}</td>
+                    <td>{{order.paid | uppercase}}</td>
+                    <td>{{order.created | date}}</td>
+                    <td>
+                      <button class="btn btn-xs btn-success"><i class="fa fa-eye"></i></button>
+                    </td>
+                  </tr>
+                  <tr ng-show="noOrders">
+                    <td colspan="9">No Orders Available</td>
+                  </tr>
+                </tbody>
+
+                
+              </table>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer clearfix">
+              {{orders.length}} Orders
+              <ul class="pagination pagination-sm no-margin pull-right">
+                <li><a href="#">&laquo;</a></li>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">&raquo;</a></li>
+              </ul>
+            </div>
+          </div>
+          <!-- /.box -->
+        </div>
+      </div>
+
+    </section>
+    <!-- /.content -->
+
+    <!-- <div class="form-group" ng-class="{ 'has-error' : userForm.name.$invalid && !userForm.name.$pristine }">
+    <label>Name</label>
+    <input type="text" name="name" class="form-control" ng-model="user.name" required>
+    <p ng-show="userForm.name.$invalid && !userForm.name.$pristine" class="help-block">You name is required.</p>
+    </div> -->
