@@ -8,10 +8,10 @@ var mongoose = require('mongoose');
 
 var app = express();
 
-mongoose.connect('mongodb://localhost/test');
+/*mongoose.connect('mongodb://localhost/test');
 
 var User = mongoose.model('User', { name: String, email: String, password: String, role: String, phone: String, address: String, state: String, lga: String, created: String });
-var Order = mongoose.model('Order', { orderId: String, category: String, products: String, qty: String, state: String, lga: String, amount: String, status: String, paid: String, created: String });
+var Order = mongoose.model('Order', { orderId: String, category: String, products: String, qty: String, state: String, lga: String, amount: String, status: String, paid: String, created: String });*/
 
 var port = process.env.PORT || 5000;
 
