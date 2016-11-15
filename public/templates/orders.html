@@ -49,7 +49,8 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr ng-repeat="order in orders | orderBy:sortType:sortReverse | filter:search">
+                  <tr ng-repeat="order in orders | orderBy:sortType:sortReverse | filter:search | 
+ pagination: curPage * pageSize | limitTo: pageSize">
                     <td>{{order.orderId}}</td>
                     <td>{{order.category}}</td>
                     <td>{{order.qty}}</td>
@@ -73,12 +74,19 @@
             <!-- /.box-body -->
             <div class="box-footer clearfix">
               {{orders.length}} Orders
-              <ul class="pagination pagination-sm no-margin pull-right">
-                <li><a href="#">&laquo;</a></li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">&raquo;</a></li>
+              <!--Pagination div -->
+
+              
+              <ul class="pagination pagination-sm no-margin pull-right" ng-show="orders.length">
+                <li><a href="javascript:void" ng-class="{disabled:curPage == 0}" ng-click="curPage=curPage-1">&laquo;</a></li>
+                <li>
+                  <span>Page {{curPage + 1}} of {{ numberOfPages() }}</span>
+                </li>
+                <!-- <li><a href="">1</a></li>
+                <li><a href="">2</a></li>
+                <li><a href="">3</a></li> -->
+                <li><a href="javascript:void" ng-class="{disabled:curPage >= orders.length/pageSize - 1}"
+                 ng-click="curPage = curPage+1">&raquo;</a></li>
               </ul>
             </div>
           </div>

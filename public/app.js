@@ -64,18 +64,38 @@ angular.module('PrintFoto',['ui.router', 'ngAnimate'])
   		$scope.sortType     = 'created'; // set the default sort type
 		$scope.sortReverse  = false;  // set the default sort order
 		$scope.search   = '';     // set the default search/filter term
+		// pagination
+		$scope.orders = [];
+		$scope.curPage = 0;
+		$scope.pageSize = 5;
+		$scope.numberOfPages = function() 
+		{
+			return Math.ceil($scope.orders.length / $scope.pageSize);
+		};
+
 
   		$http.get('/api/orders')
 	        .success(function(data) {
 	        	if (data.length<1) $scope.noOrders = true;
 	            $scope.orders = data;
+
 	            console.log(data);
 	        })
 	        .error(function(data) {
 	            console.log('Error: ' + data);
 	        });
 
-  	});
+
+  	})
+
+  	.filter('pagination', function()
+	{
+		return function(input, start)
+		{
+			start = +start;
+			return input.slice(start);
+		};
+	});
     
 
 })();

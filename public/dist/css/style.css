@@ -94,3 +94,9 @@ a.active {
 /* .page-orders.ng-enter        { animation:slideInRight 0.5s both ease-in; }
 .page-orders.ng-leave        { animation:slideOutLeft 0.5s both ease-in; }
  */
+
+.disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+  color: grey;
+}
