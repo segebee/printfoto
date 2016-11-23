@@ -1,0 +1,43 @@
+<div class="hold-transition login-page">
+<div class="login-box">
+  <div class="login-logo">
+    <b>Print</b>Foto
+  </div>
+  <!-- /.login-logo -->
+  <div class="login-box-body">
+
+    <form name="loginForm" method="post" ng-submit="login()">
+      
+      <div class="alert alert-danger" ng-show="error">
+        {{message}}
+      </div>
+      <div class="form-group has-feedback">
+        <input type="email" class="form-control" placeholder="Email" ng-model="data.email" required>
+        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback">
+        <input type="password" class="form-control" placeholder="Password" ng-model="data.password" required>
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+      </div>
+      <div class="row">
+        <!-- <div class="col-xs-8">
+          <div class="checkbox icheck">
+            <label>
+              <input type="checkbox"> Remember Me
+            </label>
+          </div>
+        </div> -->
+        <!-- /.col -->
+        <div class="col-xs-4">
+          <button type="submit" class="btn btn-success btn-block btn-flat">Sign In</button>
+        </div>
+        <!-- /.col -->
+      </div>
+    </form>
+
+<!--     <a href="#">I forgot my password</a><br>
+ -->
+  </div>
+  <!-- /.login-box-body -->
+</div>
+</div>
