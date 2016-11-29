@@ -49,8 +49,8 @@ module.exports.s3signing = function(req, res) {
       };
  
       policyBase64 = new Buffer(JSON.stringify(policy), 'utf8').toString('base64');
-      signature = crypto.createHmac('sha1', secret).update(policyBase64).digest('base64');
-      res.json({bucket: bucket, awsKey: awsKey, policy: policyBase64, signature: signature}); 
+      signature = crypto.createHmac('sha1', AWS_SECRET_KEY).update(policyBase64).digest('base64');
+      res.json({bucket: S3_BUCKET, awsKey: AWS_ACCESS_KEY, policy: policyBase64, signature: signature}); 
 
       /*s3.getSignedUrl('putObject', options, function(err, data){
         if (err) return res.json({ status: 0, message: "S3 error" });
