@@ -15,6 +15,7 @@ module.exports.allOrders = function(req, res) {
   } else {
     Order
       .find()
+      //.sort({created: 'desc'})
       .exec(function(err, orders) {
         res.status(200).json(orders);
       });

@@ -1,7 +1,7 @@
 (function() {
   "use strict";
 
-angular.module('printfoto',['ui.router', 'login', 'authService']) //, 'ngAnimate'
+angular.module('printfoto',['ui.router', 'login', 'authService', 'dataService']) //, 'ngAnimate'
 
 .config(function($stateProvider, $urlRouterProvider) {
 
@@ -71,10 +71,10 @@ angular.module('printfoto',['ui.router', 'login', 'authService']) //, 'ngAnimate
 
   	})
 
-  	.controller('ordersCtrl',function($scope,$state,$http,authenticate) {
+  	.controller('ordersCtrl',function($scope,$state,fetch) { //,$http,authenticate
   		$scope.pageClass = 'page-orders';
   		$scope.sortType     = 'created'; // set the default sort type
-  		$scope.sortReverse  = false;  // set the default sort order
+  		$scope.sortReverse  = true;  // set the default sort order
   		$scope.search   = '';     // set the default search/filter term
   		// pagination
   		$scope.orders = [];
@@ -85,31 +85,40 @@ angular.module('printfoto',['ui.router', 'login', 'authService']) //, 'ngAnimate
   			return Math.ceil($scope.orders.length / $scope.pageSize);
   		};
 
-
-  		$http.get('/api/orders', {
-        headers: {
-          Authorization: 'Bearer '+ authenticate.getToken()
+      fetch.getOrders().success(function(data) {
+        console.log('orders:',data);
+        console.log('orders length:',data.length);
+        if (data.length<1) 
+        {
+          $scope.noOrders=true;
         }
-      })
-      .success(function(data) {
-      	if (data.length<1) $scope.noOrders = true;
+        else
+        {
           $scope.orders = data;
+        }
+        
       })
-      .error(function(data) {
-          console.log('Error: ' + data);
+      .error(function(err) {
+          console.log('Error occured while fetching orders: ' + err);
       });
+
+      $scope.downloadImages = function(images) {
+        alert(images)
+      };
+      $scope.viewOrder = function(order) {
+
+      };
 
 
   	})
 
-  	.filter('pagination', function()
-	{
-		return function(input, start)
-		{
-			start = +start;
-			return input.slice(start);
-		};
-	});
+  	.filter('pagination', function() {
+  		return function(input, start)
+  		{
+  			start = +start;
+  			return input.slice(start);
+  		};
+  	});
     
 
 })();

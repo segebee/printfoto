@@ -13,11 +13,18 @@
     };
 
     var getOrders = function () {
+      console.log('fetching orders');
+      //var orders;
+
       return $http.get('/api/orders', {
         headers: {
           Authorization: 'Bearer '+ authenticate.getToken()
         }
       });
+      
+      //console.log('Service->orders:',orders);
+      //return orders;
+
     };
 
     return {

@@ -50,7 +50,7 @@
                 </thead>
                 <tbody>
                   <tr ng-repeat="order in orders | orderBy:sortType:sortReverse | filter:search | 
- pagination: curPage * pageSize | limitTo: pageSize">
+ pagination: curPage * pageSize | limitTo: pageSize track by order._id">
                     <td>{{order.orderId}}</td>
                     <td>{{order.category}}</td>
                     <td>{{order.qty}}</td>
@@ -58,9 +58,10 @@
                     <td>{{order.lga}}</td>
                     <td>{{order.status}}</td>
                     <td>{{order.paid | uppercase}}</td>
-                    <td>{{order.created | date}}</td>
+                    <td>{{order.created | date:'yyyy-MM-dd HH:mm:ss'}}</td>
                     <td>
-                      <button class="btn btn-xs btn-success"><i class="fa fa-eye"></i></button>
+                      <a class="btn btn-xs btn-info" ng-href="template" title="Bulk Download" ng-click="downloadImages(order.images)" > <i class="fa fa-cloud"></i></a>
+                      <button class="btn btn-xs btn-success" title="View Order" ng-click="viewOrder(order)"><i class="fa fa-eye"></i></button>
                     </td>
                   </tr>
                   <tr ng-show="noOrders">
