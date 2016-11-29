@@ -1,6 +1,6 @@
 /*var mongoose = require('mongoose');
 var Order = mongoose.model('Order');*/
-var aws = require('aws-sdk')
+var aws = require('aws-sdk');
 
 var S3_BUCKET = "printfotocustomerphotos";
 var AWS_ACCESS_KEY = 'AKIAJF6ZAJDAQALO3GPQ';
@@ -23,21 +23,39 @@ module.exports.s3signing = function(req, res) {
     {
       var filename = req.body.filename;
       var file_type =  "image/jpeg";
-      aws.config.update({accessKeyId: AWS_ACCESS_KEY, secretAccessKey: AWS_SECRET_KEY});
+      //aws.config.update({accessKeyId: AWS_ACCESS_KEY, secretAccessKey: AWS_SECRET_KEY});
 
-      var s3 = new aws.S3();
+      /*var s3 = new aws.S3();
       var options = {
         Bucket: S3_BUCKET,
         Key: filename,
         Expires: 6000,
         ContentType: file_type,
         ACL: 'public-read'
-      };
+      };*/
 
-      s3.getSignedUrl('putObject', options, function(err, data){
+      var fileName = req.body.fileName,
+        expiration = new Date(new Date().getTime() + 1000 * 60 * 5).toISOString();
+ 
+      var policy =
+      { "expiration": expiration,
+        "conditions": [
+            {"bucket": S3_BUCKET},
+            {"key": fileName},
+            {"acl": 'public-read'},
+            ["starts-with", "$Content-Type", ""],
+            ["content-length-range", 0, 524288000]
+        ]
+      };
+ 
+      policyBase64 = new Buffer(JSON.stringify(policy), 'utf8').toString('base64');
+      signature = crypto.createHmac('sha1', secret).update(policyBase64).digest('base64');
+      res.json({bucket: bucket, awsKey: awsKey, policy: policyBase64, signature: signature});
+
+      /*s3.getSignedUrl('putObject', options, function(err, data){
         if (err) return res.json({ status: 0, message: "S3 error" });
 
-        /*function getParameterByName(name, url) {
+        function getParameterByName(name, url) {
           if (!url) {
             url = window.location.href;
           }
@@ -48,7 +66,7 @@ module.exports.s3signing = function(req, res) {
           if (!results[2]) return '';
           return decodeURIComponent(results[2].replace(/\+/g, " "));
         }
-        var signature = getParameterByName('Signature');*/
+        var signature = getParameterByName('Signature');
 
 
         res.json({
@@ -59,7 +77,7 @@ module.exports.s3signing = function(req, res) {
           url: 'https://s3.amazonaws.com/' + S3_BUCKET + '/' + filename
         });
 
-      });
+      });*/
     }
 
 };
