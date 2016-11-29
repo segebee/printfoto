@@ -1,6 +1,7 @@
 /*var mongoose = require('mongoose');
 var Order = mongoose.model('Order');*/
 var aws = require('aws-sdk');
+var crypto = require('crypto');
 
 var S3_BUCKET = "printfotocustomerphotos";
 var AWS_ACCESS_KEY = 'AKIAJF6ZAJDAQALO3GPQ';
