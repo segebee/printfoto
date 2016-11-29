@@ -81,6 +81,7 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.json(err);
+  console.log(err);
 });
 
 // development error handler
@@ -98,6 +99,7 @@ if (app.get('env') === 'development') {
 // production error handler
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
+  console.log(err);
     res.status(err.status || 500);
     res.render('error', {
         message: err.message,
