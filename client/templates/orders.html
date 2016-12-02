@@ -62,7 +62,7 @@
                     <td>{{order.created | date:'yyyy-MM-dd HH:mm:ss'}}</td>
                     <td>
                         <div ng-repeat="files in order.uploadedFiles">
-                          <a ng-href="files" target="_blank" />
+                          <a ng-href="{{files}}" target="_blank" />
                         </div>
                     </td>
                     <td>
