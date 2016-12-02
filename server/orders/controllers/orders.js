@@ -55,8 +55,8 @@ module.exports.saveOrder = function(req, res) {
   orderModel.delivery_type = order.delivery_type;
   orderModel.delivery_charge = order.delivery_charge;
   orderModel.status = order.status;
-  
-  order.save(function(err) {
+
+  orderModel.save(function(err) {
     if (err) 
     { 
       res.status(500);
