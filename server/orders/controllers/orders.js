@@ -25,37 +25,38 @@ module.exports.allOrders = function(req, res) {
 
 module.exports.saveOrder = function(req, res) {
   //validate request
-  /*if(!req.body.orderId || !req.body.category || !req.body.products || !req.body.images || !req.body.qty || !req.body.address || !req.body.state || !req.body.lga || !req.body.amount) {
-    sendJSONresponse(res, 400, {
-      "message": "Required fields missing!"
-    });
-    return;
-  }*/
   if(!req.body) {
     sendJSONresponse(res, 400, {
-      "err": "Required fields missing!"
+      "err": "Required order object missing!"
     });
     return;
   }
-  res.status(200);
-  res.json({ "order" : req.body });
 
-  //var order = new Order();
+  var order = req.body;
+  var orderModel = new Order();
 
-  /*order.orderId = req.body.orderId;
-  order.category = req.body.category;
-  order.products = req.body.products;
-  order.images = req.body.images;
-  order.qty = req.body.qty;
-  order.address = req.body.address;
-  order.state = req.body.state;
-  order.lga = req.body.lga;
-  order.amount = req.body.amount;
-  if (req.body.email) order.email = req.body.email;
-  if (req.body.phone) order.phone = req.body.phone;*/
-
-
-  /*order.save(function(err) {
+  orderModel.orderId = order.orderId;
+  orderModel.categoryId = order.categoryId;
+  orderModel.category = order.category;
+  orderModel.productIds = order.productIds;
+  orderModel.images = order.images;
+  orderModel.uploadedFiles = order.uploadedFiles;
+  orderModel.qty = order.qty;
+  orderModel.address = order.address;
+  orderModel.state = order.state;
+  orderModel.lga = order.lga;
+  orderModel.state_name = order.state_name;
+  orderModel.lga_name = order.lga_name;
+  orderModel.amount = order.amount;
+  orderModel.total = order.total;
+  orderModel.name = order.name;
+  orderModel.email = order.email;
+  orderModel.phone = order.phone;
+  orderModel.delivery_type = order.delivery_type;
+  orderModel.delivery_charge = order.delivery_charge;
+  orderModel.status = order.status;
+  
+  order.save(function(err) {
     if (err) 
     { 
       res.status(500);
@@ -69,6 +70,6 @@ module.exports.saveOrder = function(req, res) {
       });
     }
   
-  });*/
+  });
 
 };
