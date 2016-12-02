@@ -14,7 +14,7 @@ var ctrlUpload = require('../upload/controllers/upload');
 // profile
 router.get('/profile', auth, ctrlProfile.profileRead);
 router.get('/orders', auth, ctrlOrders.allOrders);
-router.post('/saveOrder', auth, ctrlOrders.saveOrder);
+router.post('/saveOrder', ctrlOrders.saveOrder);
 
 // authentication
 router.post('/register', ctrlAuth.register);
