@@ -32,7 +32,7 @@ module.exports.saveOrder = function(req, res) {
     return;
   }
 
-  var order = req.body;
+  var order = req.body.order;
   var orderModel = new Order();
   console.log(order.orderId);
   return;
