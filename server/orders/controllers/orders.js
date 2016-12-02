@@ -34,7 +34,8 @@ module.exports.saveOrder = function(req, res) {
 
   var order = req.body;
   var orderModel = new Order();
-
+  console.log(order.orderId);
+  return;
   orderModel.orderId = order.orderId;
   orderModel.categoryId = order.categoryId;
   orderModel.category = order.category;
