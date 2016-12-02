@@ -31,14 +31,14 @@ module.exports.saveOrder = function(req, res) {
     });
     return;
   }*/
-  if(!req.body.order) {
+  if(!req.body) {
     sendJSONresponse(res, 400, {
       "err": "Required fields missing!"
     });
     return;
   }
   res.status(200);
-  res.json({ "order" : order });
+  res.json({ "order" : req.body });
 
   //var order = new Order();
 
