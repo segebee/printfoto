@@ -54,7 +54,6 @@ module.exports.saveOrder = function(req, res) {
   orderModel.phone = order.phone;
   orderModel.delivery_type = order.delivery_type;
   orderModel.delivery_charge = order.delivery_charge;
-  orderModel.status = order.status;
 
   orderModel.save(function(err) {
     if (err) 

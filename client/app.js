@@ -103,7 +103,7 @@ angular.module('printfoto',['ui.router', 'login', 'authService', 'dataService'])
       });
 
       $scope.downloadImages = function(images) {
-        alert(images)
+        //alert(images)
       };
       $scope.viewOrder = function(order) {
 
