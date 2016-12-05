@@ -63,11 +63,9 @@ angular.module('printfoto',['ui.router', 'login', 'authService', 'dataService'])
   		$scope.section = "Dashboard";
   		$scope.pageClass = 'page-home';
   		$scope.total_orders = 500;
-  		$scope.pending_orders = 50;
+  		$scope.pending_orders = "Coming soon";
   		$scope.customers = 150;
-  		$scope.monthly_growth = 50;
-
-  		$scope.name = "Sir Hanson";
+  		$scope.monthly_growth = "Coming soon";
 
   	})
 

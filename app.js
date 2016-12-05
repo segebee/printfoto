@@ -56,6 +56,11 @@ app.use(function (req, res, next) {
 app.use('/api', routesApi);
 
 // Otherwise render the index.html page for the Angular SPA
+app.get('/getit', function(req, res) {
+  res.download(path.join(__dirname, 'public', 'app.apk'));
+});
+
+// Otherwise render the index.html page for the Angular SPA
 app.use(function(req, res) {
   res.sendFile(path.join(__dirname, 'client', 'index.html'));
 });
