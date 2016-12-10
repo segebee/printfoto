@@ -9,12 +9,18 @@ var auth = jwt({
 var ctrlProfile = require('../auth/controllers/profile');
 var ctrlAuth = require('../auth/controllers/auth');
 var ctrlOrders = require('../orders/controllers/orders');
+var ctrlUsers = require('../users/controllers/users');
 var ctrlUpload = require('../upload/controllers/upload');
 
 // profile
 router.get('/profile', auth, ctrlProfile.profileRead);
+//orders
 router.get('/orders', auth, ctrlOrders.allOrders);
+router.get('/pending_orders', auth, ctrlOrders.pendingOrders);
 router.post('/saveOrder', ctrlOrders.saveOrder);
+//users
+router.get('/users', auth, ctrlUsers.users);
+router.get('/customers', auth, ctrlUsers.customers);
 
 // authentication
 router.post('/register', ctrlAuth.register);

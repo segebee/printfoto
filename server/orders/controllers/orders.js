@@ -23,6 +23,23 @@ module.exports.allOrders = function(req, res) {
 
 };
 
+module.exports.pendingOrders = function(req, res) {
+
+  if (!req.payload._id) {
+    res.status(401).json({
+      "message" : "UnauthorizedError: restricted area"
+    });
+  } else {
+    Order
+      .find({status:'received'})
+      //.sort({created: 'desc'})
+      .exec(function(err, orders) {
+        res.status(200).json(orders);
+      });
+  }
+
+};
+
 module.exports.saveOrder = function(req, res) {
   //validate request
   if(!req.body) {

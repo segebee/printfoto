@@ -21,6 +21,8 @@ module.exports.register = function(req, res) {
 
   user.name = req.body.name;
   user.email = req.body.email;
+  
+  if (req.body.role) user.role = req.body.role;
   if (req.body.phone) user.phone = req.body.phone;
   if (req.body.address) user.address = req.body.address;
   if (req.body.state) user.state = req.body.state;

@@ -10,6 +10,8 @@ var userSchema = new mongoose.Schema({
   address:     String,
   state:     String,
   lga:     String,
+  stateId:     Number,
+  lgaId:     Number,
   hash:     String,
   salt:     String,
   created:  { type: Date, default: Date.now }

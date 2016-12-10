@@ -59,13 +59,21 @@ angular.module('printfoto',['ui.router', 'login', 'authService', 'dataService'])
       
 
   	})
-  	.controller('homeCtrl',function($scope,$state) {
+  	.controller('homeCtrl',function($scope,$state,fetch) {
   		$scope.section = "Dashboard";
   		$scope.pageClass = 'page-home';
-  		$scope.total_orders = 500;
-  		$scope.pending_orders = "Coming soon";
-  		$scope.customers = 150;
-  		$scope.monthly_growth = "Coming soon";
+      fetch.getOrders().success(function(data) {
+        $scope.total_orders = data.length;        
+      });
+      fetch.getPendingOrders().success(function(data) {
+        $scope.pending_orders = data.length;        
+      });
+      fetch.getCustomers().success(function(data) {
+        $scope.customers = data.length;        
+      });
+      fetch.getUsers().success(function(data) {
+        $scope.users = data.length;        
+      });
 
   	})
 
