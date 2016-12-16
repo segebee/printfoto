@@ -1,7 +1,7 @@
 (function() {
   "use strict";
 
-angular.module('printfoto',['ui.router', 'login', 'authService', 'dataService']) //, 'ngAnimate'
+angular.module('printfoto',['ui.router', 'login', 'orders', 'users', 'authService', 'dataService']) //, 'ngAnimate'
 
 .config(function($stateProvider, $urlRouterProvider) {
 
@@ -32,10 +32,15 @@ angular.module('printfoto',['ui.router', 'login', 'authService', 'dataService'])
     })
 
     .state('app.orders', {
-    	url: '/orders',
-    	templateUrl: 'templates/orders.html',
-    	controller: 'ordersCtrl',
+      url: '/orders',
+      templateUrl: 'templates/orders.html',
+      controller: 'ordersCtrl',
     })
+    .state('app.users', {
+    	url: '/users',
+    	templateUrl: 'templates/users.html',
+    	controller: 'usersCtrl',
+    });
     /*.state('app.category', {
       url: '/category/:categoryId',
       views: {
@@ -66,7 +71,7 @@ angular.module('printfoto',['ui.router', 'login', 'authService', 'dataService'])
         $scope.total_orders = data.length;        
       });
       fetch.getPendingOrders().success(function(data) {
-        $scope.pending_orders = data.length;        
+        $scope.new_orders = data.length;        
       });
       fetch.getCustomers().success(function(data) {
         $scope.customers = data.length;        
@@ -77,54 +82,7 @@ angular.module('printfoto',['ui.router', 'login', 'authService', 'dataService'])
 
   	})
 
-  	.controller('ordersCtrl',function($scope,$state,fetch) { //,$http,authenticate
-  		$scope.pageClass = 'page-orders';
-  		$scope.sortType     = 'created'; // set the default sort type
-  		$scope.sortReverse  = true;  // set the default sort order
-  		$scope.search   = '';     // set the default search/filter term
-  		// pagination
-  		$scope.orders = [];
-  		$scope.curPage = 0;
-  		$scope.pageSize = 5;
-  		$scope.numberOfPages = function() 
-  		{
-  			return Math.ceil($scope.orders.length / $scope.pageSize);
-  		};
 
-      fetch.getOrders().success(function(data) {
-        console.log('orders:',data);
-        console.log('orders length:',data.length);
-        if (data.length<1) 
-        {
-          $scope.noOrders=true;
-        }
-        else
-        {
-          $scope.orders = data;
-        }
-        
-      })
-      .error(function(err) {
-          console.log('Error occured while fetching orders: ' + err);
-      });
-
-      $scope.downloadImages = function(images) {
-        //alert(images)
-      };
-      $scope.viewOrder = function(order) {
-
-      };
-
-
-  	})
-
-  	.filter('pagination', function() {
-  		return function(input, start)
-  		{
-  			start = +start;
-  			return input.slice(start);
-  		};
-  	});
     
 
 })();

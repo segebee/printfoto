@@ -45,7 +45,7 @@ module.exports.saveUser = function(req, res) {
   //validate request
   if(!req.body) {
     sendJSONresponse(res, 400, {
-      "err": "Required order object missing!"
+      "err": "Required user object missing!"
     });
     return;
   }
@@ -82,5 +82,29 @@ module.exports.saveUser = function(req, res) {
     }
     
   });
+
+};
+
+module.exports.removeUser = function(req, res) {
+  //validate request
+  if(!req.body.user) {
+    sendJSONresponse(res, 400, { "err": "user is missing!" });
+    return;
+  }
+
+  if (!req.payload._id) {
+    res.status(401).json({
+      "message" : "UnauthorizedError: restricted area"
+    });
+  } 
+  else 
+  {
+    console.log(req.body.user);
+    User.remove( { _id: req.body.user._id } , function(err) {
+      if (err) { res.status(500).json({ "error" : err }); return; }
+      //log user who deleted this
+        res.status(200).json({ "message" : "user removed" });
+    });
+  }
 
 };

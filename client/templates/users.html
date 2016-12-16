@@ -1,5 +1,5 @@
     <section class="content-header">
-      <h1>Orders</h1>
+      <h1>Users</h1>
     </section>
 
     <!-- Main content -->
@@ -10,7 +10,7 @@
         <div class="col-md-12">
           <div class="box box-danger">
             <div class="box-header with-border">
-              <h3 class="box-title">All Orders</h3>
+              <h3 class="box-title">Users</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -21,7 +21,7 @@
                     <div class="form-group">
                       <div class="input-group">
                         <div class="input-group-addon"><i class="fa fa-search"></i></div>
-                        <input type="text" class="form-control" placeholder="Search Orders..." ng-model="search">
+                        <input type="text" class="form-control" placeholder="Search Users..." ng-model="search">
                       </div>      
                     </div>
                   </div>
@@ -32,66 +32,52 @@
                 <thead>
                   <tr>
                     <th>
-                      <a href="" ng-click="sortType='orderId';sortReverse=!sortReverse">
-                        Order ID 
-                        <span ng-show="sortType=='orderId'" class="fa" ng-class="sortReverse ? 'fa-caret-up':'fa-caret-down'"></span>
+                      <a href="" ng-click="sortType='name';sortReverse=!sortReverse">
+                        Name 
+                        <span ng-show="sortType=='name'" class="fa" ng-class="sortReverse ? 'fa-caret-up':'fa-caret-down'"></span>
                         <!-- <span ng-show="sortType=='orderId' && sortReverse" class="fa fa-caret-up"></span> -->
                       </a>
                     </th>
-                    <th>Category</th>
-                    <th>QTY</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Address</th>
                     <th>State</th>
                     <th>LGA</th>
-                    <th>Status</th>
-                    <th>Paid</th>
-                    <th>Date</th>
+                    <th>Created</th>
                     <th class=""></th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr ng-repeat="order in orders | orderBy:sortType:sortReverse | filter:search | 
+                  <tr ng-repeat="user in users | orderBy:sortType:sortReverse | filter:search | 
  pagination: curPage * pageSize | limitTo: pageSize">
-                    <td>{{order.orderId}}</td>
-                    <td><span class="label label-info">{{order.category}}</span></td>
-                    <td>{{order.qty}}</td>
-                    <td>{{order.state_name}}</td>
-                    <td>{{order.lga_name}}</td>
-                    <td><span class="label label-success">{{order.status}}</span></td>
-                    <td><span class="label label-danger">{{order.paid | uppercase}}</span></td>
-                    <td>{{order.created | date:'yyyy-MM-dd HH:mm:ss'}}</td>
-                    <!-- <td>
-                        <div ng-repeat="files in order.uploadedFiles">
-                          <a ng-href="{{files}}" target="_blank">View File</a><br/>
-                        </div>
-                    </td> -->
+                    <td>{{user.name}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.phone}}</td>
+                    <td>{{user.address}}</td>
+                    <td>{{user.state}}</td>
+                    <td>{{user.lga}}</td>
+                    <td>{{user.created | date:'yyyy-MM-dd HH:mm:ss'}}</td>
                     <td class="actions">
-                      <button class="btn btn-sm btn-default" title="View Order" ng-click="viewOrder(order)"><i class="fa fa-search"></i></button>
-                      <button class="btn btn-sm btn-info" title="Download All Images" ng-click="downloadImages(order.orderId,order.images)">
-                        <i class="fa fa-download"></i>
-                      </button>
-                      <button class="btn btn-sm btn-success" title="Mark as Completed" ng-click="updateOrder(order)">
-                        <i class="fa fa-check"></i>
-                      </button>
-                      <button class="btn btn-sm btn-danger" title="Delete Order" ng-click="removeOrder(order)">
+                      <!-- <button class="btn btn-sm btn-default" title="View User" ng-click="viewUser(user)"><i class="fa fa-search"></i></button> -->
+                      <button class="btn btn-sm btn-danger" title="Delete User" ng-click="removeUser(user)">
                         <i class="fa fa-trash"></i>
                       </button>
                     </td>
                   </tr>
-                  <tr ng-show="noOrders">
-                    <td colspan="9">No Orders Available</td>
+                  <tr ng-show="noUsers">
+                    <td colspan="8">No Users Available</td>
                   </tr>
                 </tbody>
 
-                
               </table>
             </div>
             <!-- /.box-body -->
             <div class="box-footer clearfix">
-              {{orders.length}} Orders
+              {{users.length}} Users
               <!--Pagination div -->
 
               
-              <ul class="pagination pagination-sm no-margin pull-right" ng-show="orders.length">
+              <ul class="pagination pagination-sm no-margin pull-right" ng-show="users.length">
                 <li><a href="javascript:void" ng-class="{disabled:curPage == 0}" ng-click="curPage=curPage-1">&laquo;</a></li>
                 <li>
                   <span>Page {{curPage + 1}} of {{ numberOfPages() }}</span>
@@ -99,7 +85,7 @@
                 <!-- <li><a href="">1</a></li>
                 <li><a href="">2</a></li>
                 <li><a href="">3</a></li> -->
-                <li><a href="javascript:void" ng-class="{disabled:curPage >= orders.length/pageSize - 1}"
+                <li><a href="javascript:void" ng-class="{disabled:curPage >= users.length/pageSize - 1}"
                  ng-click="curPage = curPage+1">&raquo;</a></li>
               </ul>
             </div>

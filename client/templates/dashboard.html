@@ -15,14 +15,16 @@
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h3>{{pending_orders}}</h3>
+              <h3>{{new_orders}}</h3>
 
-              <p>Pending Orders</p>
+              <p>New Orders</p>
             </div>
             <div class="icon">
-              <i class="ion ion-bag"></i>
+              <i class="fa fa-cart-plus"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a ui-sref="app.orders" class="small-box-footer">
+              More info <i class="fa fa-arrow-circle-right"></i>
+            </a>
           </div>
         </div>
         <!-- ./col -->
@@ -35,9 +37,11 @@
               <p>Total Orders</p>
             </div>
             <div class="icon">
-              <i class="ion ion-stats-bars"></i>
+              <i class="fa fa-shopping-bag"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a ui-sref="app.orders" class="small-box-footer">
+              More info <i class="fa fa-arrow-circle-right"></i>
+            </a>
           </div>
         </div>
         <!-- ./col -->
@@ -50,9 +54,11 @@
               <p>Customers</p>
             </div>
             <div class="icon">
-              <i class="ion ion-person-add"></i>
+              <i class="fa fa-users"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a ui-sref="app.users" class="small-box-footer">
+              More info <i class="fa fa-arrow-circle-right"></i>
+            </a>
           </div>
         </div>
         <!-- ./col -->
@@ -65,9 +71,11 @@
               <p>Users</p>
             </div>
             <div class="icon">
-              <i class="ion ion-pie-graph"></i>
+              <i class="fa fa-users"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a ui-sref="app.users" class="small-box-footer">
+              More info <i class="fa fa-arrow-circle-right"></i>
+            </a>
           </div>
         </div>
         <!-- ./col -->
@@ -233,10 +241,10 @@
                  <button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown">
                    <i class="fa fa-bars"></i></button>
                  <ul class="dropdown-menu pull-right" role="menu">
-                   <li><a href="#">Add new event</a></li>
-                   <li><a href="#">Clear events</a></li>
+                   <li><a href="javascript:void">Add new event</a></li>
+                   <li><a href="javascript:void">Clear events</a></li>
                    <li class="divider"></li>
-                   <li><a href="#">View calendar</a></li>
+                   <li><a href="javascript:void">View calendar</a></li>
                  </ul>
                </div>
                <button type="button" class="btn btn-success btn-sm" data-widget="collapse"><i class="fa fa-minus"></i>

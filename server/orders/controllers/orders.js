@@ -75,8 +75,7 @@ module.exports.saveOrder = function(req, res) {
   orderModel.save(function(err) {
     if (err) 
     { 
-      res.status(500);
-      res.json({ "error" : err });
+      res.status(500).json({ "error" : err });
     }
     else
     {
@@ -87,5 +86,94 @@ module.exports.saveOrder = function(req, res) {
     }
   
   });
+
+};
+
+module.exports.removeOrder = function(req, res) {
+  //validate request
+  if(!req.body.order) {
+    sendJSONresponse(res, 400, { "err": "Order is missing!" });
+    return;
+  }
+
+  if (!req.payload._id) {
+    res.status(401).json({
+      "message" : "UnauthorizedError: restricted area"
+    });
+  } 
+  else 
+  {
+    console.log(req.body.order);
+	Order.remove( { _id: req.body.order._id } , function(err) {
+		if (err) { res.status(500).json({ "error" : err }); return; }
+		//log user who deleted this
+	    res.status(200).json({ "message" : "Order removed" });
+	});
+  }
+
+};
+
+module.exports.updateOrder = function(req, res) {
+  //validate request
+  if(!req.body.order || !req.body.fields) {
+    sendJSONresponse(res, 400, { "err": "Fields missing!" });
+    return;
+  }
+
+  if (!req.payload._id) {
+    res.status(401).json({
+      "message" : "UnauthorizedError: restricted area"
+    });
+  } 
+  else 
+  {
+    console.log(req.body.order);
+    console.log(req.body.fields);
+
+    var order = req.body.order;
+    var fields = req.body.fields[0];
+    var updateDoc = {};
+    updateDoc[fields] = order[fields];
+    /*updateDoc.images = [
+      "https://s3-eu-west-1.amazonaws.com/printfotocustomerphotos/SR34555881480657582674.jpg",
+      "https://s3-eu-west-1.amazonaws.com/printfotocustomerphotos/SR34555881480659021380.jpg",
+      "https://s3-eu-west-1.amazonaws.com/printfotocustomerphotos/SR34555881480657582680.jpg",
+    ];*/
+
+	Order.update({ _id: order._id }, { $set: updateDoc}, function(err,result) {
+		if (err) { res.status(500).json({ "error" : err }); return; }
+		res.status(200).json({ "message" : "Order updated" });
+	});
+  }
+
+};
+
+module.exports.downloadImages = function(req, res) {
+  //validate request
+  if(!req.body.orderId || !req.body.images) {
+    sendJSONresponse(res, 400, { "err": "Fields missing!" });
+    return;
+  }
+
+  if (!req.payload._id) {
+    res.status(401).json({
+      "message" : "UnauthorizedError: restricted area"
+    });
+  } 
+  else 
+  {
+    console.log(req.body.order);
+    console.log(req.body.fields);
+
+    var order = req.body.order;
+    var fields = req.body.fields[0];
+    var updateDoc = {};
+    updateDoc[fields] = order[fields];
+
+	Order.update({ _id: order._id }, { $set: updateDoc}, function(err,result) {
+		if (err) { res.status(500).json({ "error" : err }); return; }
+		res.status(200).json({ "message" : "Order updated" });
+	});
+  }
 
 };

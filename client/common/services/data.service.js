@@ -55,12 +55,54 @@
       });
     };
 
+    var removeOrder = function (order) {
+      console.log('removing order');
+      return $http.post('/api/removeOrder', {order:order}, {
+        headers: {
+          Authorization: 'Bearer '+ authenticate.getToken()
+        }
+      });
+    };
+
+    var removeUser = function (user) {
+      console.log('removing user');
+      return $http.post('/api/removeUser', {user:user}, {
+        headers: {
+          Authorization: 'Bearer '+ authenticate.getToken()
+        }
+      });
+    };
+
+    var updateOrder = function (order,fields) {
+      console.log('updating order');
+      return $http.post('/api/updateOrder', {order:order,fields:fields}, {
+        headers: {
+          Authorization: 'Bearer '+ authenticate.getToken()
+        }
+      });
+    };
+
+    //return images as zip
+    var downloadImages = function (orderId,images) {
+      console.log('downloading images');
+      return $http.post('/api/downloadImages', {orderId:orderId,images:images}, {
+        headers: {
+          Authorization: 'Bearer '+ authenticate.getToken()
+        },
+        responseType: 'arraybuffer'
+      });
+    };
+
     return {
       getProfile : getProfile,
       getOrders : getOrders,
       getCustomers : getCustomers,
       getUsers : getUsers,
+      removeUser : removeUser,
       getPendingOrders : getPendingOrders,
+      removeOrder : removeOrder,
+      updateOrder : updateOrder,
+      downloadImages : downloadImages,
     };
 
   });

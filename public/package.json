@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "main": "app.js",
-  "scripts": {
-  },
+  "scripts": {},
   "dependencies": {
-    
+    "angular-animate": "^1.6.0",
+    "angular-ui-bootstrap": "^2.3.1"
   }
 }
