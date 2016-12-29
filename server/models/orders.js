@@ -21,6 +21,7 @@ var orderSchema = new mongoose.Schema({
   amount:     { type: String, required: true },
   delivery_charge:     { type: String, required: true },
   total:     { type: String, required: true },
+  txnRef:       { type: String },
   paid:       { type: String, default: "no" },
   status:     { type: String, default: "received" },
   created:    { type: Date, default: Date.now }
