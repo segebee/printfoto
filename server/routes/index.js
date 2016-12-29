@@ -21,6 +21,7 @@ router.get('/pending_orders', auth, ctrlOrders.pendingOrders);
 router.post('/saveOrder', ctrlOrders.saveOrder);
 router.post('/removeOrder', auth, ctrlOrders.removeOrder);
 router.post('/updateOrder', auth, ctrlOrders.updateOrder);
+router.post('/updateOrderMobile', ctrlOrders.updateOrder);
 //download
 router.post('/downloadImages', auth, ctrlDownload.downloadImages);
 //users

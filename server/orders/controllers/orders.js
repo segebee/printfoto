@@ -140,11 +140,30 @@ module.exports.updateOrder = function(req, res) {
       "https://s3-eu-west-1.amazonaws.com/printfotocustomerphotos/SR34555881480657582680.jpg",
     ];*/
 
-	Order.update({ _id: order._id }, { $set: updateDoc}, function(err,result) {
+  Order.update({ _id: order._id }, { $set: updateDoc}, function(err,result) {
+    if (err) { res.status(500).json({ "error" : err }); return; }
+    res.status(200).json({ "message" : "Order updated" });
+  });
+  }
+
+};
+
+module.exports.updateOrderMobile = function(req, res) {
+  //validate request
+  if(!req.body.orderId || !req.body.doc) {
+    sendJSONresponse(res, 400, { "err": "Fields missing!" });
+    return;
+  }
+  console.log(req.body.orderId);
+  console.log(req.body.doc);
+
+  var orderId = req.body.orderId;
+  var doc = req.body.doc;
+
+	Order.update({ orderId: orderId }, { $set: doc}, function(err,result) {
 		if (err) { res.status(500).json({ "error" : err }); return; }
 		res.status(200).json({ "message" : "Order updated" });
 	});
-  }
 
 };
 
