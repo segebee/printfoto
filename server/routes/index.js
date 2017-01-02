@@ -15,7 +15,7 @@ var ctrlDownload = require('../download/controllers/download');
 var ctrlAds = require('../ads/controllers/ads');
 
 // ads
-router.get('/getAd', auth, ctrlAds.getAd);
+router.get('/getAd', ctrlAds.getAd);
 // profile
 router.get('/profile', auth, ctrlProfile.profileRead);
 //orders
