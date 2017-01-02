@@ -12,7 +12,10 @@ var ctrlOrders = require('../orders/controllers/orders');
 var ctrlUsers = require('../users/controllers/users');
 var ctrlUpload = require('../upload/controllers/upload');
 var ctrlDownload = require('../download/controllers/download');
+var ctrlAds = require('../ads/controllers/ads');
 
+// ads
+router.get('/getAd', auth, ctrlAds.getAd);
 // profile
 router.get('/profile', auth, ctrlProfile.profileRead);
 //orders
