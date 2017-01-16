@@ -200,8 +200,9 @@ module.exports.downloadImages = function(req, res) {
 
 module.exports.totalCustomers = function(req, res) {
 
-  Order.find().distinct('email', function(error, ids) {
+  Order.find().distinct('email', function(err, ids) {
     //console.log(ids.length);
+    if (err) { res.status(500).json({ "error" : err }); return; }
     res.status(200).json({ "total" : ids.length });
     // ids is an array of all ObjectIds
   });
