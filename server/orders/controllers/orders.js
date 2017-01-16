@@ -190,10 +190,20 @@ module.exports.downloadImages = function(req, res) {
     var updateDoc = {};
     updateDoc[fields] = order[fields];
 
-	Order.update({ _id: order._id }, { $set: updateDoc}, function(err,result) {
-		if (err) { res.status(500).json({ "error" : err }); return; }
-		res.status(200).json({ "message" : "Order updated" });
-	});
+  Order.update({ _id: order._id }, { $set: updateDoc}, function(err,result) {
+    if (err) { res.status(500).json({ "error" : err }); return; }
+    res.status(200).json({ "message" : "Order updated" });
+  });
   }
+
+};
+
+module.exports.totalCustomers = function(req, res) {
+
+  Order.find().distinct('email', function(error, ids) {
+    //console.log(ids.length);
+    res.status(200).json({ "total" : ids.length });
+    // ids is an array of all ObjectIds
+  });
 
 };

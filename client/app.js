@@ -73,9 +73,12 @@ angular.module('printfoto',['ui.router', 'login', 'orders', 'users', 'authServic
       fetch.getPendingOrders().success(function(data) {
         $scope.new_orders = data.length;        
       });
-      fetch.getCustomers().success(function(data) {
-        $scope.customers = data.length;        
+      fetch.getTotalCustomers().success(function(data) {
+        $scope.customers = data.total;        
       });
+      /*fetch.getCustomers().success(function(data) {
+        $scope.customers = data.length;        
+      });*/
       fetch.getUsers().success(function(data) {
         $scope.users = data.length;        
       });

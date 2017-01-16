@@ -37,6 +37,16 @@
       });
     };
 
+    var getTotalCustomers = function () {
+      console.log('fetching customers');
+      //var customers;
+      return $http.get('/api/totalCustomers', {
+        headers: {
+          Authorization: 'Bearer '+ authenticate.getToken()
+        }
+      });
+    };
+
     var getUsers = function () {
       console.log('fetching users');
       return $http.get('/api/users', {
@@ -97,6 +107,7 @@
       getProfile : getProfile,
       getOrders : getOrders,
       getCustomers : getCustomers,
+      getTotalCustomers : getTotalCustomers,
       getUsers : getUsers,
       removeUser : removeUser,
       getPendingOrders : getPendingOrders,

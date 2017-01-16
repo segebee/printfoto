@@ -25,6 +25,8 @@ router.post('/saveOrder', ctrlOrders.saveOrder);
 router.post('/removeOrder', auth, ctrlOrders.removeOrder);
 router.post('/updateOrder', auth, ctrlOrders.updateOrder);
 router.post('/updateOrderMobile', ctrlOrders.updateOrderMobile);
+
+router.get('/totalCustomers', ctrlOrders.totalCustomers);
 //download
 router.post('/downloadImages', auth, ctrlDownload.downloadImages);
 //users
