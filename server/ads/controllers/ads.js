@@ -1,13 +1,13 @@
 var mongoose = require('mongoose');
-var Order = mongoose.model('Order');
+var Ad = mongoose.model('Ad');
 
 
 module.exports.getAd = function(req, res) {
-    res.status(200).json("http://www.printfoto.ng/ad.jpg");
-    /*Ad
+    //res.status(200).json("http://www.printfoto.ng/ad.jpg");
+    Ad
       .findOne()
       .exec(function(err, ad) {
         res.status(200).json(ad);
-      });*/
+      });
 
 };

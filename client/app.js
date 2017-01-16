@@ -80,7 +80,7 @@ angular.module('printfoto',['ui.router', 'login', 'orders', 'users', 'authServic
         $scope.users = data.length;        
       });
 
-  	})
+  	});
 
 
     

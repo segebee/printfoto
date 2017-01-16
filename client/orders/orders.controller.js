@@ -17,6 +17,9 @@
         return Math.ceil($scope.orders.length / $scope.pageSize);
       };
 
+      $scope.viewOrderDetails = false;
+      $scope.OrderDetails = {};
+
       fetch.getOrders().success(function(data) {
         console.log('orders:',data);
         console.log('orders length:',data.length);
@@ -74,8 +77,11 @@
       };
 
       $scope.viewOrder = function(order) {
+        $scope.viewOrderDetails = true;
+        $scope.OrderDetails= order;
+        //$scope.OrderDetailsPhotos = order.uploadedFiles;
         //$scope.order = order;
-
+        //console.log(order.uploadedFiles);
       };
 
       $scope.removeOrder = function(order) {

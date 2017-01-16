@@ -6,6 +6,7 @@ var orderSchema = new mongoose.Schema({
   categoryId:   { type: String, required: true },
   category:   { type: String, required: true },
   productIds:   { type: Array, required: true },
+  products:   { type: Array, required: true },
   images:   { type: Array },
   uploadedFiles:   { type: Array },
   qty:        { type: String, required: true },

@@ -80,10 +80,9 @@
                   <tr ng-show="noOrders">
                     <td colspan="9">No Orders Available</td>
                   </tr>
-                </tbody>
-
-                
+                </tbody>                
               </table>
+
             </div>
             <!-- /.box-body -->
             <div class="box-footer clearfix">
@@ -104,7 +103,84 @@
               </ul>
             </div>
           </div>
-          <!-- /.box -->
+          <!-- /END box -->
+          <!-- START Order VIEW -->
+          <div class="box" ng-show="viewOrderDetails">
+            <div class="box-body">
+              <h4>ORDER DETAILS</h4>
+
+              <div class="row">
+                <div class="col-md-4 order_item_title">Order ID</div>
+                <div class="col-md-8 order_item_value">{{OrderDetails.orderId}}</div>
+              </div>
+              <div class="row">
+                <div class="col-md-4 order_item_title">Name</div>
+                <div class="col-md-8 order_item_value">{{OrderDetails.name}}</div>
+              </div>
+              <div class="row">
+                <div class="col-md-4 order_item_title">Email</div>
+                <div class="col-md-8 order_item_value">{{OrderDetails.email}}</div>
+              </div>
+              <div class="row">
+                <div class="col-md-4 order_item_title">Phone</div>
+                <div class="col-md-8 order_item_value">{{OrderDetails.phone}}</div>
+              </div>
+              <div class="row">
+                <div class="col-md-4 order_item_title">Address</div>
+                <div class="col-md-8 order_item_value">{{OrderDetails.address}}</div>
+              </div>
+              <div class="row">
+                <div class="col-md-4 order_item_title">State</div>
+                <div class="col-md-8 order_item_value">{{OrderDetails.state_name}}</div>
+              </div>
+              <div class="row">
+                <div class="col-md-4 order_item_title">LGA</div>
+                <div class="col-md-8 order_item_value">{{OrderDetails.lga_name}}</div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-4 order_item_title">Category</div>
+                <div class="col-md-8 order_item_value">{{OrderDetails.category}}</div>
+              </div>
+              <div class="row">
+                <div class="col-md-4 order_item_title">Products</div>
+                <div class="col-md-8 order_item_value">
+                  <div class="product" ng-repeat="product in OrderDetails.products">{{product}}</div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4 order_item_title">Quantity</div>
+                <div class="col-md-8 order_item_value">{{OrderDetails.qty}}</div>
+              </div>
+              <div class="row">
+                <div class="col-md-4 order_item_title">Delivery Type</div>
+                <div class="col-md-8 order_item_value">{{OrderDetails.delivery_type}}</div>
+              </div>
+              <div class="row">
+                <div class="col-md-4 order_item_title">Amount</div>
+                <div class="col-md-8 order_item_value">{{OrderDetails.amount}}</div>
+              </div>
+              <div class="row">
+                <div class="col-md-4 order_item_title">Delivery Charge</div>
+                <div class="col-md-8 order_item_value">{{OrderDetails.delivery_charge}}</div>
+              </div>
+              <div class="row">
+                <div class="col-md-4 order_item_title">Total</div>
+                <div class="col-md-8 order_item_value">{{OrderDetails.total}}</div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-4 order_item_title">Photos</div>
+                <div class="col-md-8 order_item_value">
+                  <div class="photo" ng-repeat="photo in OrderDetails.uploadedFiles track by $index">
+                    <a href="{{photo}}" target="_blank"> View Photo </a>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <!-- END Order VIEW -->
         </div>
       </div>
 
