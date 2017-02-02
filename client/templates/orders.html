@@ -65,7 +65,7 @@
                         </div>
                     </td> -->
                     <td class="actions">
-                      <button class="btn btn-sm btn-default" title="View Order" ng-click="viewOrder(order)"><i class="fa fa-search"></i></button>
+                      <button class="btn btn-sm btn-default" data-toggle="modal" data-target="#myModal" title="View Order" ng-click="viewOrder(order)"><i class="fa fa-search"></i></button>
                       <button class="btn btn-sm btn-info" title="Download All Images" ng-click="downloadImages(order.orderId,order.uploadedFiles)">
                         <i class="fa fa-download"></i>
                       </button>
@@ -104,15 +104,32 @@
             </div>
           </div>
           <!-- /END box -->
-          <!-- START Order VIEW -->
-          <div class="box" ng-show="viewOrderDetails">
-            <div class="box-body">
-              <h4>ORDER DETAILS</h4>
 
-              <div class="row">
-                <div class="col-md-4 order_item_title">Order ID</div>
-                <div class="col-md-8 order_item_value">{{OrderDetails.orderId}}</div>
-              </div>
+        </div>
+      </div>
+       
+
+    </section>
+    <!-- /.content -->
+
+<!-- Modal Start-->
+  <div class="modal fade" id="myModal" role="dialog">
+
+    <div class="modal-dialog">
+
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h2 class="modal-title">Order Details</h2>
+        </div>
+
+        <div class="modal-body">
+
+          <div class="order_details">
+            
+              
+              <div class="section_header">Personal Details</div>
               <div class="row">
                 <div class="col-md-4 order_item_title">Name</div>
                 <div class="col-md-8 order_item_value">{{OrderDetails.name}}</div>
@@ -130,44 +147,99 @@
                 <div class="col-md-8 order_item_value">{{OrderDetails.address}}</div>
               </div>
               <div class="row">
-                <div class="col-md-4 order_item_title">State</div>
-                <div class="col-md-8 order_item_value">{{OrderDetails.state_name}}</div>
-              </div>
-              <div class="row">
                 <div class="col-md-4 order_item_title">LGA</div>
                 <div class="col-md-8 order_item_value">{{OrderDetails.lga_name}}</div>
               </div>
+              <div class="row">
+                <div class="col-md-4 order_item_title">State</div>
+                <div class="col-md-8 order_item_value">{{OrderDetails.state_name}}</div>
+              </div>
 
+              <div class="section_header">Order Details</div>
+
+              <div class="row">
+                <div class="col-md-4 order_item_title">Order ID</div>
+                <div class="col-md-8 order_item_value">{{OrderDetails.orderId}}</div>
+              </div>
               <div class="row">
                 <div class="col-md-4 order_item_title">Category</div>
                 <div class="col-md-8 order_item_value">{{OrderDetails.category}}</div>
               </div>
               <div class="row">
-                <div class="col-md-4 order_item_title">Products</div>
-                <div class="col-md-8 order_item_value">
-                  <div class="product" ng-repeat="product in OrderDetails.products">{{product}}</div>
-                </div>
+                <div class="col-md-4 order_item_title">Order Status</div>
+                <div class="col-md-8 order_item_value">{{OrderDetails.status}}</div>
               </div>
               <div class="row">
-                <div class="col-md-4 order_item_title">Quantity</div>
+                <div class="col-md-4 order_item_title">Date Ordered</div>
+                <div class="col-md-8 order_item_value">{{OrderDetails.created | date:'yyyy-MM-dd HH:mm:ss'}}</div>
+              </div>
+
+              <div class="section_header">Product Details</div>
+
+              <div class="row">
+                
+                <div class="col-md-12 products_table_header">
+                  <div class="col-md-4 order_item_title">
+                    Product
+                  </div>
+                  <div class="col-md-2 order_item_title">
+                    Qty
+                  </div>
+                  <div class="col-md-4 order_item_title">
+                    File
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="row" ng-repeat="product in OrderDetails.products">
+
+                <div class="col-md-12 products_table">
+                  <div class="col-md-4 order_item_value">
+                    {{product.name}}
+                  </div>
+                  <div class="col-md-2 order_item_value">
+                    {{product.qty}}
+                  </div>
+                  <div class="col-md-4 order_item_actions">
+                    <a href="{{product.file}}" target="_blank"> View Photo </a>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="row">
+                <div class="col-md-4 order_item_title">Total Quantity</div>
                 <div class="col-md-8 order_item_value">{{OrderDetails.qty}}</div>
               </div>
+
+              <div class="section_header">Delivery Details</div>
+
               <div class="row">
                 <div class="col-md-4 order_item_title">Delivery Type</div>
-                <div class="col-md-8 order_item_value">{{OrderDetails.delivery_type}}</div>
+                <div class="col-md-8 order_item_value">{{OrderDetails.delivery_type | uppercase}}</div>
               </div>
+
+              <div class="section_header">Financial Details</div>
+
               <div class="row">
                 <div class="col-md-4 order_item_title">Amount</div>
-                <div class="col-md-8 order_item_value">{{OrderDetails.amount}}</div>
+                <div class="col-md-8 order_item_value">&#x20A6; {{OrderDetails.amount}}</div>
               </div>
               <div class="row">
                 <div class="col-md-4 order_item_title">Delivery Charge</div>
-                <div class="col-md-8 order_item_value">{{OrderDetails.delivery_charge}}</div>
+                <div class="col-md-8 order_item_value">&#x20A6; {{OrderDetails.delivery_charge}}</div>
               </div>
               <div class="row">
                 <div class="col-md-4 order_item_title">Total</div>
-                <div class="col-md-8 order_item_value">{{OrderDetails.total}}</div>
+                <div class="col-md-8 order_item_value">&#x20A6; {{OrderDetails.total}}</div>
               </div>
+              <div class="row">
+                <div class="col-md-4 order_item_title">Paid?</div>
+                <div class="col-md-8 order_item_value">{{ OrderDetails.paid | uppercase }}</div>
+              </div>
+
+              <!--<div class="section_header">Photos Uploaded</div>
 
               <div class="row">
                 <div class="col-md-4 order_item_title">Photos</div>
@@ -176,37 +248,18 @@
                     <a href="{{photo}}" target="_blank"> View Photo </a>
                   </div>
                 </div>
-              </div>
+              </div>-->
 
-            </div>
-          </div>
-          <!-- END Order VIEW -->
+          </div> 
+
         </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+        </div>
+
       </div>
-
-    </section>
-    <!-- /.content -->
-
-<!-- modal template -->
-<div class="modal-view">
-<script type="text/ng-template" id="orderModal.html">
-    <div class="modal-header">
-        <h3 class="modal-title" id="modal-title">Order Details</h3>
-    </div>
-    <div class="modal-body" id="modal-body">
-        OrderId: 
-        <!-- <ul>
-            <li ng-repeat="item in $ctrl.items">
-                <a href="#" ng-click="$event.preventDefault(); $ctrl.selected.item = item">{{ item }}</a>
-            </li>
-        </ul>
-        Selected: <b>{{ $ctrl.selected.item }}</b> -->
-    </div>
-    <div class="modal-footer">
-        <!-- <button class="btn btn-primary" type="button" ng-click="$ctrl.ok()">OK</button> -->
-        <button class="btn btn-warning" type="button" ng-click="$ctrl.cancel()">Close</button>
-    </div>
-</script>
-<div class="modal-parent">
     </div>
 </div>
+<!-- Modal End-->

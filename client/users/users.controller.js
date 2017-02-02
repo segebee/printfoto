@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  angular.module('users',['ui.bootstrap'])
+  angular.module('users',[])
 
   .controller('usersCtrl',function($scope,$state,$uibModal,$document,fetch) { //,$http,authenticate
       $scope.pageClass = 'page-users';
@@ -62,12 +62,12 @@
 
   })
 
-  .controller('userModalCtrl', function ($uibModal, $log, $document) {
-    var $ctrl = this;
-    $ctrl.items = ['item1', 'item2', 'item3'];
+  // .controller('userModalCtrl', function ($uibModal, $log, $document) {
+  //   var $ctrl = this;
+  //   $ctrl.items = ['item1', 'item2', 'item3'];
 
-    $ctrl.animationsEnabled = true;
-  })
+  //   $ctrl.animationsEnabled = true;
+  // })
 
   .filter('pagination', function() {
     return function(input, start)

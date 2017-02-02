@@ -50,8 +50,9 @@ module.exports.saveOrder = function(req, res) {
   }
 
   var order = req.body.order;
+  //console.log(order);
   var orderModel = new Order();
-  //console.log(order.orderId);
+  console.log(order.orderId);
   orderModel.orderId = order.orderId;
   orderModel.categoryId = order.categoryId;
   orderModel.category = order.category;
@@ -61,8 +62,8 @@ module.exports.saveOrder = function(req, res) {
   orderModel.uploadedFiles = order.uploadedFiles;
   orderModel.qty = order.qty;
   orderModel.address = order.address;
-  orderModel.state = order.state;
-  orderModel.lga = order.lga;
+  orderModel.stateId = order.stateId;
+  orderModel.lgaId = order.lgaId;
   orderModel.state_name = order.state_name;
   orderModel.lga_name = order.lga_name;
   orderModel.amount = order.amount;
@@ -76,6 +77,7 @@ module.exports.saveOrder = function(req, res) {
   orderModel.save(function(err) {
     if (err) 
     { 
+      console.log(err);
       res.status(500).json({ "error" : err });
     }
     else

@@ -118,3 +118,21 @@ a.active {
     display: table;
     content: " ";
 } */
+
+.order_item_title {
+  font-weight: bold;
+}
+.section_header{
+  font-size: 10px;
+  padding-left: 10px;
+  background-color: #eee;
+  color: #444;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+.products_table {
+  display: table;
+}
+.products_table_header {
+  border-bottom: 1px solid #00a65a;
+}

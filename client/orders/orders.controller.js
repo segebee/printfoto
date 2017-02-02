@@ -1,9 +1,9 @@
 (function () {
   "use strict";
 
-  angular.module('orders',['ui.bootstrap'])
+  angular.module('orders',[])
 
-  .controller('ordersCtrl',function($scope,$state,$uibModal,$document,fetch) { //,$http,authenticate
+  .controller('ordersCtrl',function($scope,$state,fetch) { //,$http,authenticate
       $scope.pageClass = 'page-orders';
       $scope.sortType     = 'created'; // set the default sort type
       $scope.sortReverse  = true;  // set the default sort order
@@ -107,12 +107,12 @@
 
   })
 
-  .controller('orderModalCtrl', function ($uibModal, $log, $document) {
-    var $ctrl = this;
-    $ctrl.items = ['item1', 'item2', 'item3'];
+  // .controller('orderModalCtrl', function ($uibModal, $log, $document) {
+  //   var $ctrl = this;
+  //   $ctrl.items = ['item1', 'item2', 'item3'];
 
-    $ctrl.animationsEnabled = true;
-  })
+  //   $ctrl.animationsEnabled = true;
+  // })
 
   .filter('pagination', function() {
     return function(input, start)
