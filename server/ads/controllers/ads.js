@@ -11,3 +11,39 @@ module.exports.getAd = function(req, res) {
       });
 
 };
+
+module.exports.saveAd = function(req, res) {
+    //validate request
+  if(!req.body) {
+    sendJSONresponse(res, 400, {
+      "err": "Required order object missing!"
+    });
+    return;
+  }
+
+  var ad = req.body.ad;
+  //console.log(order);
+  var adModel = new Ad();
+  
+  adModel.title = ad.title;
+  adModel.owner = ad.owner;
+  adModel.img = ad.img;
+  adModel.url = ad.url;
+
+  adModel.save(function(err) {
+    if (err) 
+    { 
+      console.log(err);
+      res.status(500).json({ "error" : err });
+    }
+    else
+    {
+      res.status(200);
+      res.json({
+        "message" : "Ad saved"
+      });
+    }
+  
+  });
+
+};

@@ -16,6 +16,7 @@ var ctrlAds = require('../ads/controllers/ads');
 
 // ads
 router.get('/getAd', ctrlAds.getAd);
+router.post('/saveAd', ctrlAds.saveAd);
 // profile
 router.get('/profile', auth, ctrlProfile.profileRead);
 //orders

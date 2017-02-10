@@ -5,6 +5,7 @@ var adSchema = new mongoose.Schema({
   owner:    { type: String },
   img:    { type: String },
   url:     { type: String },
+  active:     { type: Number, default: 1 },
   created:    { type: Date, default: Date.now }
 });
 

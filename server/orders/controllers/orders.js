@@ -56,11 +56,14 @@ module.exports.saveOrder = function(req, res) {
   orderModel.orderId = order.orderId;
   orderModel.categoryId = order.categoryId;
   orderModel.category = order.category;
-  orderModel.productIds = order.productIds;
+  //orderModel.productIds = order.productIds;
   orderModel.products = order.products;
   orderModel.images = order.images;
   orderModel.uploadedFiles = order.uploadedFiles;
   orderModel.qty = order.qty;
+  orderModel.name = order.name;
+  orderModel.email = order.email;
+  orderModel.phone = order.phone;
   orderModel.address = order.address;
   orderModel.stateId = order.stateId;
   orderModel.lgaId = order.lgaId;
@@ -68,9 +71,7 @@ module.exports.saveOrder = function(req, res) {
   orderModel.lga_name = order.lga_name;
   orderModel.amount = order.amount;
   orderModel.total = order.total;
-  orderModel.name = order.name;
-  orderModel.email = order.email;
-  orderModel.phone = order.phone;
+  
   orderModel.delivery_type = order.delivery_type;
   orderModel.delivery_charge = order.delivery_charge;
 
