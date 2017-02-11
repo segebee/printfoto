@@ -108,11 +108,11 @@ module.exports.removeOrder = function(req, res) {
   else 
   {
     console.log(req.body.order);
-	Order.remove( { _id: req.body.order._id } , function(err) {
-		if (err) { res.status(500).json({ "error" : err }); return; }
-		//log user who deleted this
-	    res.status(200).json({ "message" : "Order removed" });
-	});
+    Order.remove( { _id: req.body.order._id } , function(err) {
+      if (err) { res.status(500).json({ "error" : err }); return; }
+      //log user who deleted this
+        res.status(200).json({ "message" : "Order removed" });
+    });
   }
 
 };
