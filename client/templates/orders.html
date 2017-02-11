@@ -174,63 +174,65 @@
                 <div class="col-md-8 order_item_value">{{OrderDetails.created | date:'yyyy-MM-dd HH:mm:ss'}}</div>
               </div>
 
-              <div class="section_header">Product Details</div>
-
-              <div class="row">
-                
-                <div class="col-md-12 products_table_header">
-                  <div class="col-md-4 order_item_title">
-                    Product
-                  </div>
-                  <div class="col-md-2 order_item_title">
-                    Qty
-                  </div>
-                  <div class="col-md-4 order_item_title">
-                    Amount (&#x2016;)
-                  </div>
-                  <div class="col-md-3 order_item_actions">
-                    &nbsp;
-                  </div>
-                </div>
-
-              </div>
-
-              <div class="row" ng-repeat="product in OrderDetails.products">
-
-                <div class="col-md-12 products_table">
-                  <div class="col-md-4 order_item_value">
-                    {{product.name}}
-                  </div>
-                  <div class="col-md-2 order_item_value">
-                    {{product.qty}}
-                  </div>
-                  <div class="col-md-3 order_item_value">
-                    {{product.total}}
-                  </div>
-                  <div class="col-md-3 order_item_actions">
-                    <a href="{{product.file}}" target="_blank"> View Photo </a>
-                  </div>
-                </div>
-
-              </div>
-
-              <div class="row" style="border-top: 1px solid #ccc">
-
+              <div class="productBox">
               
-                  <div class="col-md-4 order_item_value">
-                    Total
-                  </div>
-                  <div class="col-md-2 order_item_value">
-                    {{OrderDetails.qty}}
-                  </div>
-                  <div class="col-md-3 order_item_value">
-                    {{OrderDetails.total}}
-                  </div>
-                  <div class="col-md-3 order_item_actions">
-                    &nbsp;
-                  </div>
-                
+                <div class="section_header">Product Details</div>
 
+                  <div class="row">
+                    
+                    <div class="col-md-12 products_table_header">
+                      <div class="col-md-4 order_item_title">
+                        Product
+                      </div>
+                      <div class="col-md-2 order_item_title">
+                        Qty
+                      </div>
+                      <div class="col-md-4 order_item_title">
+                        Amount (&#x20A6;)
+                      </div>
+                      <div class="col-md-2 order_item_actions">
+                        &nbsp;
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div class="row" ng-repeat="product in OrderDetails.products" ng-show="isCart">
+
+                    <div class="col-md-12 products_table">
+                      <div class="col-md-4 order_item_value">
+                        {{product.name}}
+                      </div>
+                      <div class="col-md-2 order_item_value">
+                        {{product.qty}}
+                      </div>
+                      <div class="col-md-4 order_item_value">
+                        {{product.total}}
+                      </div>
+                      <div class="col-md-2 order_item_actions">
+                        <a href="{{product.uploadedFile}}" target="_blank"><i class="fa fa-search"></i> </a>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div class="row productTotal">
+                    <div class="col-md-12 products_table">
+                      <div class="col-md-4 order_item_value">
+                        Total
+                      </div>
+                      <div class="col-md-2 order_item_value">
+                        {{OrderDetails.qty}}
+                      </div>
+                      <div class="col-md-4 order_item_value">
+                        {{OrderDetails.amount}}
+                      </div>
+                      <div class="col-md-2 order_item_actions">
+                        &nbsp;
+                      </div>
+                    </div>
+                    
+                  </div>
               </div>
 
               <div class="section_header">Delivery Details</div>

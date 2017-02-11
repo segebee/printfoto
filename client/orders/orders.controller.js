@@ -78,7 +78,16 @@
 
       $scope.viewOrder = function(order) {
         $scope.viewOrderDetails = true;
-        $scope.OrderDetails= order;
+        $scope.OrderDetails = order;
+        if (order.categoryId !== 3)
+        {
+          $scope.isCart = true;
+        }
+        else
+        {
+          $scope.isCart = false;
+        }
+
         //$scope.OrderDetailsPhotos = order.uploadedFiles;
         //$scope.order = order;
         //console.log(order.uploadedFiles);

@@ -136,3 +136,12 @@ a.active {
 .products_table_header {
   border-bottom: 1px solid #00a65a;
 }
+.productBox {
+  margin: 0 20px;
+  width: 95%;
+}
+.productTotal {
+   border-top: 1px solid #ccc;
+   margin-top: 10px;
+   font-weight: 600
+}
