@@ -145,3 +145,8 @@ a.active {
    margin-top: 10px;
    font-weight: 600
 }
+
+.avatar {
+  border-radius: 100%;
+  border: 1px solid lightseagreen;
+}

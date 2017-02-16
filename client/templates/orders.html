@@ -132,42 +132,46 @@
               <div class="section_header">Personal Details</div>
               <div class="row">
                 <div class="col-md-4 order_item_title">Name</div>
-                <div class="col-md-8 order_item_value">{{OrderDetails.name}}</div>
+                <div class="col-md-8 order_item_value">{{OrderDetails.name | uppercase}}</div>
               </div>
               <div class="row">
                 <div class="col-md-4 order_item_title">Email</div>
-                <div class="col-md-8 order_item_value">{{OrderDetails.email}}</div>
+                <div class="col-md-8 order_item_value">
+                  <a ng-href="mailto:{{OrderDetails.email}}"> {{OrderDetails.email}} </a>
+                </div>
               </div>
               <div class="row">
                 <div class="col-md-4 order_item_title">Phone</div>
-                <div class="col-md-8 order_item_value">{{OrderDetails.phone}}</div>
+                <div class="col-md-8 order_item_value">
+                  <a ng-href="tel:{{OrderDetails.phone}}"> {{OrderDetails.phone}} </a>
+                </div>
               </div>
               <div class="row">
                 <div class="col-md-4 order_item_title">Address</div>
-                <div class="col-md-8 order_item_value">{{OrderDetails.address}}</div>
+                <div class="col-md-8 order_item_value">{{OrderDetails.address | uppercase}}</div>
               </div>
               <div class="row">
                 <div class="col-md-4 order_item_title">LGA</div>
-                <div class="col-md-8 order_item_value">{{OrderDetails.lga_name}}</div>
+                <div class="col-md-8 order_item_value">{{OrderDetails.lga_name | uppercase}}</div>
               </div>
               <div class="row">
                 <div class="col-md-4 order_item_title">State</div>
-                <div class="col-md-8 order_item_value">{{OrderDetails.state_name}}</div>
+                <div class="col-md-8 order_item_value">{{OrderDetails.state_name | uppercase}}</div>
               </div>
 
               <div class="section_header">Order Details</div>
 
               <div class="row">
                 <div class="col-md-4 order_item_title">Order ID</div>
-                <div class="col-md-8 order_item_value">{{OrderDetails.orderId}}</div>
+                <div class="col-md-8 order_item_value">{{OrderDetails.orderId | uppercase}}</div>
               </div>
               <div class="row">
                 <div class="col-md-4 order_item_title">Category</div>
-                <div class="col-md-8 order_item_value">{{OrderDetails.category}}</div>
+                <div class="col-md-8 order_item_value">{{OrderDetails.category | uppercase}}</div>
               </div>
               <div class="row">
                 <div class="col-md-4 order_item_title">Order Status</div>
-                <div class="col-md-8 order_item_value">{{OrderDetails.status}}</div>
+                <div class="col-md-8 order_item_value">{{OrderDetails.status | uppercase}}</div>
               </div>
               <div class="row">
                 <div class="col-md-4 order_item_title">Date Ordered</div>
@@ -211,6 +215,27 @@
                       </div>
                       <div class="col-md-2 order_item_actions">
                         <a href="{{product.uploadedFile}}" target="_blank"><i class="fa fa-search"></i> </a>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div class="row" >
+
+                    <div class="col-md-12 products_table">
+                      <div class="col-md-4 order_item_value">
+                        {{OrderDetails.product}}
+                      </div>
+                      <div class="col-md-2 order_item_value">
+                        {{OrderDetails.qty}}
+                      </div>
+                      <div class="col-md-2 order_item_value">
+                        {{OrderDetails.amount}}
+                      </div>
+                      <div class="col-md-4 order_item_actions">
+                        <div class="photo" ng-repeat="photo in OrderDetails.uploadedFiles track by $index">
+                          <a href="{{photo}}" target="_blank"> View Photo {{$index+1}} </a>
+                        </div>
                       </div>
                     </div>
 

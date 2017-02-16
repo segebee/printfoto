@@ -49,38 +49,33 @@ module.exports.saveAd = function(req, res) {
 };
 
 module.exports.updateAd = function(req, res) {
-    //validate request
-  if(!req.body) {
-    sendJSONresponse(res, 400, {
-      "err": "Required ad object missing!"
+  //validate request
+  if(!req.body.ad || !req.body.fields) {
+    res.status(400).json({
+      "message" : "Missing ad object"
     });
     return;
   }
 
-  var ad = req.body.ad;
-  //console.log(ad);
-  var adModel = new Ad();
-  
-  adModel.title = ad.title;
-  adModel.owner = ad.owner;
-  adModel.img = ad.img;
-  adModel.url = ad.url;
+  if (!req.payload._id) {
+    res.status(401).json({
+      "message" : "UnauthorizedError: restricted area"
+    });
+  } 
+  else 
+  {
+    console.log(req.body.ad);
+    console.log(req.body.fields);
 
-  adModel.save(function(err) {
-    if (err) 
-    { 
-      console.log(err);
-      res.status(500).json({ "error" : err });
-    }
-    else
-    {
-      res.status(200);
-      res.json({
-        "message" : "Ad saved"
-      });
-    }
-  
-  });
+    var ad = req.body.ad;
+    var fields = req.body.fields[0];
+    var updateDoc = {};
+    updateDoc[fields] = ad[fields];
+    Ad.update({ _id: ad._id }, { $set: updateDoc}, function(err,result) {
+      if (err) { res.status(500).json({ "error" : err }); return; }
+      res.status(200).json({ "message" : "Ad updated" });
+    });
+  }
 
 };
 

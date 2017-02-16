@@ -12,6 +12,7 @@ var userSchema = new mongoose.Schema({
   lga:     String,
   stateId:     Number,
   lgaId:     Number,
+  avatar: String,
   hash:     String,
   salt:     String,
   created:  { type: Date, default: Date.now }

@@ -3,7 +3,7 @@
 
   angular.module('users',[])
 
-  .controller('usersCtrl',function($scope,$state,$uibModal,$document,fetch) { //,$http,authenticate
+  .controller('usersCtrl',function($scope,$state,fetch) { //,$http,authenticate
       $scope.pageClass = 'page-users';
       $scope.sortType     = 'created'; // set the default sort type
       $scope.sortReverse  = true;  // set the default sort order
@@ -36,7 +36,10 @@
 
       $scope.viewUser = function(user) {
         //$scope.order = order;
-
+        $scope.viewUserDetails = true;
+        var default_avatar = "dist/img/avatar.png";
+        if (!user.avatar || user.avatar.length < 1) user.avatar = default_avatar;
+        $scope.UserDetails = user;
       };
 
       $scope.removeUser = function(user) {
