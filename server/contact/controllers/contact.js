@@ -21,7 +21,7 @@ module.exports.saveMessage = function(req, res) {
   var contactModel = new Contact();
   
   
-  contactModel.name = mesage.name;
+  contactModel.name = message.name;
   contactModel.email = message.email;
   contactModel.phone = message.phone;
   contactModel.message = message.message;
