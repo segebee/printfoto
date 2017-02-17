@@ -2,3 +2,4 @@ npm-debug.log
 node_modules/
 public/documentation/
 public/node_modules/
+.DS_Store
