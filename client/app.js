@@ -36,6 +36,11 @@ angular.module('printfoto',['ui.router', 'login', 'orders', 'users', 'authServic
       templateUrl: 'templates/orders.html',
       controller: 'ordersCtrl',
     })
+    .state('app.customers', {
+    	url: '/customers',
+    	templateUrl: 'templates/users.html',
+    	controller: 'customersCtrl',
+    })
     .state('app.users', {
     	url: '/users',
     	templateUrl: 'templates/users.html',

@@ -48,3 +48,4 @@ process.on('SIGTERM', function() {
 require('./users');
 require('./orders');
 require('./ads');
+require('./contact');

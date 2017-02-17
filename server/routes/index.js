@@ -13,6 +13,7 @@ var ctrlUsers = require('../users/controllers/users');
 var ctrlUpload = require('../upload/controllers/upload');
 var ctrlDownload = require('../download/controllers/download');
 var ctrlAds = require('../ads/controllers/ads');
+var ctrlContact = require('../contact/controllers/contact');
 
 // ads
 router.get('/getAd', ctrlAds.getAd);
@@ -44,6 +45,9 @@ router.post('/login', ctrlAuth.login);
 //upload files
 router.post('/upload', ctrlUpload.uploadFile);
 router.post('/s3signing', ctrlUpload.s3signing);
+
+//contact
+router.post('/saveMessage', ctrlContact.saveMessage);
 
 //test
 router.get('/test', function(req,res) {
