@@ -61,6 +61,7 @@ module.exports.saveUser = function(req, res) {
   if (user.address) userModel.address = user.address;
   if (user.state) userModel.state = user.state;
   if (user.lga) userModel.lga = user.lga;
+  if (user.deviceToken) userModel.deviceToken = user.deviceToken;
 
   userModel.setPassword(user.password);
 

@@ -49,3 +49,4 @@ require('./users');
 require('./orders');
 require('./ads');
 require('./contact');
+require('./device');

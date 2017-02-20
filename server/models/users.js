@@ -13,6 +13,7 @@ var userSchema = new mongoose.Schema({
   stateId:     Number,
   lgaId:     Number,
   avatar: String,
+  deviceToken: String,
   hash:     String,
   salt:     String,
   created:  { type: Date, default: Date.now }
