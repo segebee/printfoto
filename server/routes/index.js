@@ -51,7 +51,7 @@ router.post('/s3signing', ctrlUpload.s3signing);
 router.post('/saveMessage', ctrlContact.saveMessage);
 
 //push
-router.post('/storeDevice', ctrlPush.storeDevice);
+router.post('/storeDevice', ctrlDevice.storeDevice);
 
 //test
 router.get('/test', function(req,res) {
