@@ -52,6 +52,7 @@ router.post('/saveMessage', ctrlContact.saveMessage);
 
 //push
 router.post('/storeDevice', ctrlDevice.storeDevice);
+router.get('/getDevices', ctrlDevice.getDevices);
 
 //test
 router.get('/test', function(req,res) {
