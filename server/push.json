@@ -1,0 +1,21 @@
+{
+    "webPort": 8000, 
+    "mongodbUrl": "mongodb://localhost/printfoto",
+    "gcm": {
+        "apiKey": "AAAAvPmxd28:APA91bFVwKxK9DG-hFt9HKYtMF5bbQoNIcDexllomf5CS_hF63YbJsG3sjVAKOkggHaYbv7gHGbfuNiH8tQfMRFMp9knN1BsWuLZpJAXBSMJx25uli-DlInqTqzgxpK1dOxPuFdZG1nV"
+    }, 
+    "apn": {
+        "connection": {
+            "gateway": "gateway.sandbox.push.apple.com",
+            "cert": "/path/to/cert.pem",
+            "key": "/path/to/key.pem"
+        },
+        "feedback": {
+            "address": "feedback.sandbox.push.apple.com",
+            "cert": "/path/to/cert.pem",
+            "key": "/path/to/key.pem",
+            "interval": 43200,
+            "batchFeedback": true
+        }
+    }
+}
