@@ -36,7 +36,7 @@ userSchema.methods.generateJwt = function() {
     role: this.role,
     name: this.name,
     exp: parseInt(expiry.getTime() / 1000),
-  }, "HansonPrintsFoto"); // DO NOT KEEP YOUR SECRET IN THE CODE!
+  }, "haha"); // DO NOT KEEP YOUR SECRET IN THE CODE!
 };
 
 mongoose.model('User', userSchema);
